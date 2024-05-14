@@ -66,3 +66,11 @@ h1 {
 #home-link {
     color: #fff;
 }
+
+.answers {
+    display: none;
+}
+
+.chinese {
+    font-size: x-large;
+}
