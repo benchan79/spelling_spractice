@@ -96,3 +96,12 @@ document.addEventListener("DOMContentLoaded", function() {
         return button;
     }
 });
+
+function checkPassword(answerId) {
+    var password = prompt("Please enter the password to view the answers:");
+    if (password === "147852") {
+        document.getElementById(answerId).style.display = 'block';
+    } else {
+        alert("Incorrect password. Please try again.");
+    }
+}
