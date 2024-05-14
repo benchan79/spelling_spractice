@@ -1,9 +1,23 @@
 import os
 import sys
+import json
 from gtts import gTTS
 import pandas as pd
 from tqdm import tqdm
 
+def load_config(config_file: str) -> dict:
+    """
+    Load configuration from a JSON file.
+
+    Args:
+        config_file (str): Path to the configuration file.
+
+    Returns:
+        dict: Configuration dictionary.
+    """
+    with open(config_file, 'r') as f:
+        config = json.load(f)
+    return config
 
 def generate_pause_binary() -> bytes:
     """
@@ -97,5 +111,7 @@ if __name__ == "__main__":
 
     if not os.path.exists(output_directory_path):
         os.makedirs(output_directory_path)
+
+    config = load_config("config.json")
 
     generate_audio_files(input_file_path, output_directory_path, text_language)
