@@ -48,14 +48,15 @@ def generate_audio_files(
     """
     df = pd.read_csv(input_file, sep=":", header=None)
     pause_binary = generate_pause_binary()
-    list_word_num_dict = config["word_count_to_list_dict"]
+    word_count_dict  = config["word_count_to_list_dict"]
 
     start = 0
     end = 0
 
     with tqdm(total=df.shape[0], desc="Generating audio files") as pbar:
-        for list_num in list_word_num_dict:
-            end += list_word_num_dict[list_num]
+        for list_num_str, word_count in word_count_dict.items():
+            list_num = int(list_num_str)
+            end += word_count
             df_sub = df.iloc[start:end]
             for word_num, word in enumerate(df_sub.values):
                 list_num_str = str(list_num + 1).zfill(2)
