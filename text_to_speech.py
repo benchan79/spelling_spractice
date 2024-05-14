@@ -47,22 +47,8 @@ def generate_audio_files(
         language (str): Language used in the input CSV file.
     """
     df = pd.read_csv(input_file, sep=":", header=None)
-
     pause_binary = generate_pause_binary()
-
-    # Dictionary to store number of words in each list
-    list_word_num_dict = {
-        0: 10,
-        1: 10,
-        2: 11,
-        3: 10,
-        4: 10,
-        5: 10,
-        6: 11,
-        7: 10,
-        8: 10,
-        9: 10,
-    }
+    list_word_num_dict = config["word_count_to_list_dict"]
 
     start = 0
     end = 0
